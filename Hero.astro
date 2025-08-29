@@ -1,0 +1,13 @@
+---
+const { headline, subhead, ctaHref = "/contact/", ctaText = "Get Started", img = "/img/hero.jpg", alt = "Telehealth"} = Astro.props;
+---
+<section class="grid grid-2" style="align-items:center;">
+  <div>
+    <h1 style="font-size:var(--h1); margin:.2rem 0 1rem 0;">{headline}</h1>
+    <p style="font-size:18px; color:var(--muted); margin-bottom:1rem;">{subhead}</p>
+    <a class="btn" href={ctaHref}>{ctaText}</a>
+  </div>
+  <div class="card">
+    <img src={img} alt={alt} style="width:100%; border-radius: var(--radius);" />
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = {
+  title: "Contact Us | TeleMed Visits Florida Telehealth",
+  description: "Contact TeleMed Visits. Email Support@TeleMedVisits.com or mail 1323 SE 17th St., PMB 91611, Fort Lauderdale, FL 33316."
+};
+---
+<BaseLayout title={{page.title}} description={{page.description}}>
+  <header style="text-align:center;">
+    <h1 style="font-size: clamp(28px,4vw,42px);">Contact Us</h1>
+  </header>
+
+  <section style="margin-top:1rem;">
+    <dl class="card" style="max-width:780px;">
+      <div class="row">
+        <dt style="font-weight:700;">Email:</dt>
+        <dd><a href="mailto:Support@TeleMedVisits.com">Support@TeleMedVisits.com</a></dd>
+      </div>
+      <div class="row">
+        <dt style="font-weight:700;">Mail:</dt>
+        <dd>
+          1323 SE 17th St., PMB 91611,<br/>
+          Fort Lauderdale, FL 33316
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <style>
+    dl.card { padding:1rem; }
+    .row { display:flex; gap:.75rem; padding:.35rem 0; }
+    dt { min-width: 70px; }
+  </style>
+
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TeleMedVisits, LLC",
+    "email": "Support@TeleMedVisits.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1323 SE 17th St., PMB 91611",
+      "addressLocality": "Fort Lauderdale",
+      "addressRegion": "FL",
+      "postalCode": "33316",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+</BaseLayout>

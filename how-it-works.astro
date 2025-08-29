@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = {
+  title: "How Telehealth Works in Florida | TeleMed Visits",
+  description: "Step-by-step Florida telehealth: book online, complete intake forms in 5–10 minutes, get a secure Google Meet link, and attend your virtual visit—no insurance needed."
+};
+---
+<BaseLayout title={{page.title}} description={{page.description}}>
+  <header style="text-align:center;">
+    <h1 style="font-size: clamp(28px,4vw,42px);">How Telehealth Works in Florida</h1>
+    <p style="color:var(--muted); margin:.25rem 0 0;">Book online • Complete forms • Join secure video visit</p>
+  </header>
+
+  <section class="steps">
+    <!-- Step 1: Book now -->
+    <article class="step">
+      <p class="caption">Schedule an appointment here — <a href="/start-your-visit/">Start Your Visit</a></p>
+      <div class="booknow">
+        <a href="https://TeleMedVisits.intakeq.com/booking" target="_blank" aria-label="Make an online appointment">
+          <img src="https://intakeq.com/images/booknow.png" width="162" height="45" alt="TeleMed Visits — Book Now button to schedule an online telehealth appointment in Florida"/>
+        </a>
+      </div>
+    </article>
+
+    <!-- Step 2: Fill out patient forms -->
+    <article class="step">
+      <img src="/img/how-forms.jpg" alt="Complete HIPAA‑secure patient intake forms online — about 5 to 10 minutes" />
+      <p class="caption">Fill out patient forms. Approx. 5–10 min.</p>
+    </article>
+
+    <!-- Step 3: Receive confirmation email with link -->
+    <article class="step">
+      <img src="/img/how-meet.jpg" alt="Receive confirmation email with a secure Google Meet link to join your telehealth visit" />
+      <p class="caption">Receive a confirmation email with link to join visit — see our <a href="/faqs/">FAQs</a></p>
+    </article>
+
+    <!-- Step 4: Attend virtual visit -->
+    <article class="step">
+      <img src="/img/how-zoom.jpg" alt="Attend your virtual telehealth visit using the secure video link provided" />
+      <p class="caption">Attend your virtual visit with link provided</p>
+    </article>
+  </section>
+
+  <style>
+    .steps {
+      display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.25rem; align-items:start; margin-top:.75rem;
+    }
+    .step { text-align:center; }
+    .step img {
+      width:100%; height: 160px; object-fit: contain; background:#fff;
+      border:1px solid #e6eaf0; border-radius: var(--radius); padding:.75rem;
+    }
+    .booknow img { height:45px; width:162px; }
+    .caption { font-size:.95rem; color: var(--text); margin:.5rem 0 0; }
+    @media (max-width: 1100px) { .steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } .step img { height: 140px; } }
+  </style>
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How Telehealth Works in Florida",
+  "description": "Book online, complete forms, receive a Google Meet link, and attend your virtual visit with TeleMed Visits.",
+  "totalTime": "PT15M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Schedule an appointment",
+      "url": "/start-your-visit/",
+      "image": "https://example.com/img/how-forms.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Complete intake forms (5–10 minutes)",
+      "image": "https://example.com/img/how-forms.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Receive confirmation with Meet link",
+      "image": "https://example.com/img/how-meet.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Attend your virtual visit",
+      "image": "https://example.com/img/how-zoom.jpg"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com/" },
+    { "@type": "ListItem", "position": 2, "name": "How It Works", "item": "https://example.com/how-it-works/" }
+  ]
+}
+</script>
+</BaseLayout>

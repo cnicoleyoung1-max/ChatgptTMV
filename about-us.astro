@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = {
+  title: "About Us | TeleMed Visits Florida Telehealth",
+  description: "TeleMedVisits, LLC is a Florida Woman Veteran Owned Small Business founded by Crystal “Nicole” Young, MSN, APRN, FNP‑C. We provide affordable, convenient telehealth for Florida adults."
+};
+---
+<BaseLayout title={{page.title}} description={{page.description}}>
+  <header style="text-align:center;">
+    <h1 style="font-size: clamp(28px,4vw,42px);">About Us</h1>
+  </header>
+
+  <section class="bio-wrap">
+    <figure class="portrait">
+      <img src="/img/about-nicole.png" alt="Crystal “Nicole” Young, MSN, APRN, FNP‑C — founder of TeleMedVisits Florida telehealth" />
+      <figcaption>Founder, CEO, and USAF Woman Veteran,<br/> Crystal “Nicole” Young, MSN, APRN, FNP‑C</figcaption>
+    </figure>
+
+    <article class="bio card dark">
+      <p><strong>TeleMedVisits, LLC</strong> is a <strong>Florida Woman Veteran Owned Small Business</strong>.</p>
+
+      <p>We saw a need for those who experience challenges to access to care, so we want to help close the gap.</p>
+
+      <p>We offer low cost Telemedicine visits from where ever you are: Work, Home, Car, and honestly anywhere in the state of Florida.</p>
+
+      <p>Our care is provided by <strong>Florida Board Certified Practitioners</strong> licensed to practice in the state of Florida.</p>
+
+      <p>Our CEO, <strong>Crystal Nicole Young</strong>, is a board certified <strong>Advanced Practice Registered Nurse</strong> in the state of Florida.</p>
+
+      <p>She first served active duty from 2004–2008 as a Medic in the United States Air Force at the age of 18 during Operation Iraqi Freedom stationed at Langley Air Force Base in Virginia. She was part of just 5% of women on active duty.</p>
+
+      <p>After enlistment, she worked as an LPN working her way up to an RN and ultimately attending Florida State University to obtain her APRN. She was recognized for being the top 10% of her Nursing class at FSU and was inducted into Sigma Theta Tau International Honor Society for Nurses. In addition to nursing she holds a Bachelor of Science degree in Psychology (University of Central Florida) as she believes that the mind is a major part of healing.</p>
+
+      <p>She is committed to serving the community and giving back to veterans. To her, veterans are a special group of people that deserve the world and “there's no one that understands a veteran more than your brothers and sisters in arms. We sacrificed, we gave, and we endured. Most would never understand; but a veteran does.”</p>
+    </article>
+  </section>
+
+  <style>
+    .bio-wrap {
+      display:grid; grid-template-columns: minmax(260px, 380px) 1fr; gap: 1.25rem; align-items:start;
+      margin-top: 1rem;
+    }
+    .portrait { margin:0; text-align:center; }
+    .portrait img { width:100%; height:auto; object-fit:cover; border-radius: var(--radius); border:1px solid #e6eaf0; }
+    .portrait figcaption { margin-top:.5rem; font-size:.95rem; color: var(--muted); }
+    .dark {
+      background: #3a3a3a; color: #fff;
+    }
+    .dark p { color: #f3f5f7; }
+    @media (max-width: 980px) {
+      .bio-wrap { grid-template-columns: 1fr; }
+      .portrait { order: -1; }
+    }
+  </style>
+
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TeleMedVisits, LLC",
+    "url": "https://example.com/",
+    "founder": {
+      "@type": "Person",
+      "name": "Crystal Nicole Young",
+      "jobTitle": "Founder & CEO, APRN, FNP-C"
+    },
+    "areaServed": "Florida, USA",
+    "description": "Florida Woman Veteran Owned Small Business providing affordable telehealth for adults 18+ in Florida."
+  }
+  </script>
+</BaseLayout>

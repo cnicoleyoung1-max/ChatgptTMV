@@ -1,0 +1,65 @@
+:root {
+  /* === COLORS (brand) === */
+  --brand: #00b7ff;   /* cyan */
+  --brand-2: #00ffaa; /* mint accent */
+  --text: #0b2242;    /* deep navy */
+  --bg: #ffffff;
+  --surface: #f6f8f9;
+  --muted: #5b6b84;
+
+  /* === TYPOGRAPHY === */
+  --font-sans: "BrandFont", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --h1: 42px;
+  --h2: 28px;
+  --h3: 22px;
+  --body: 16px;
+
+  /* === RADII & SPACING === */
+  --radius: 16px;
+  --pad: clamp(16px, 2vw, 28px);
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+@font-face {
+  font-family: "BrandFont";
+  src: url("/fonts/BrandFont.otf") format("opentype");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--body);
+  line-height: 1.6;
+}
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: var(--pad); }
+.grid { display: grid; gap: 1.25rem; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  background: var(--brand);
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+.btn:hover { background: var(--brand-2); }
+
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}

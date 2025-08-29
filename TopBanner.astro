@@ -1,0 +1,21 @@
+---
+const { text = "", ctaText = "Get Started Now", ctaHref = "/start-your-visit/" } = Astro.props;
+---
+<div class="topbar">
+  <a class="cta" href={ctaHref}>{ctaText}</a>
+</div>
+<style>
+  .topbar {
+    background: #00b7ff;
+    padding: .35rem 0;
+    text-align: center;
+  }
+  .cta {
+    display:inline-block;
+    padding:.4rem .9rem;
+    background:#ffffff;
+    color:#0b2242;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+</style>

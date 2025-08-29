@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = { title: "Contact", description: "Book an appointment or ask a question" };
+---
+<BaseLayout title={page.title} description={page.description}>
+  <h1 style="font-size:var(--h1);">Contact</h1>
+  <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+  <p>Booking: Link your PracticeQ or Google Calendar booking page here.</p>
+  <p>Service area: Florida</p>
+</BaseLayout>

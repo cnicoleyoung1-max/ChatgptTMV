@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = { title: "Services", description: "What we treat and how we work" };
+---
+<BaseLayout title={page.title} description={page.description}>
+  <h1 style="font-size:var(--h1);">Services</h1>
+  <p class="muted">Replace this copy with your page script.</p>
+  <div class="grid grid-2" style="margin-top:1rem;">
+    <div class="card">
+      <h3>Acute Care</h3>
+      <ul>
+        <li>UTIs</li>
+        <li>Sinusitis</li>
+        <li>Dermatitis</li>
+        <li>...and more</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Medication Refills</h3>
+      <p>Where clinically appropriate, we can provide short-term refills and transitions of care.</p>
+    </div>
+  </div>
+</BaseLayout>

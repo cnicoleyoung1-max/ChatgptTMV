@@ -1,0 +1,203 @@
+
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = {
+  title: "What We Treat",
+  description: "Treatments available via telehealth for adults 18+ in Florida."
+};
+---
+<BaseLayout title={{page.title}} description={{page.description}}>
+  <header>
+    <h1 style="font-size:var(--h1); margin-bottom:.25rem;">What We Treat</h1>
+    <p style="color:var(--muted);">Adults 18+ • Florida residents only</p>
+    <p><strong>Treatments Available</strong> <em>(Not all inclusive. We treat many other conditions)</em></p>
+  </header>
+
+  <!-- Eye, Ear, Nose, Mouth & Throat -->
+  <section class="grid grid-2" style="margin-top:1rem;">
+    <article class="card">
+      <h3>Eye, Ear, Nose, Mouth &amp; Throat</h3>
+      <ul>
+        <li>Cold Sore</li>
+        <li>Dental abscess / Infection</li>
+        <li>Ear Infection (Swimmer's Ear)</li>
+        <li>Eye Infection (Pink Eye)</li>
+        <li>Laryngitis</li>
+        <li>Seasonal Allergies</li>
+        <li>Sinus Infection</li>
+        <li>Strep Throat</li>
+        <li>Stye</li>
+        <li>Thrush</li>
+        <li>Tonsillitis</li>
+      </ul>
+    </article>
+
+    <!-- Respiratory -->
+    <article class="card">
+      <h3>Respiratory System</h3>
+      <ul>
+        <li>Asthma</li>
+        <li>Bronchitis</li>
+        <li>COPD</li>
+        <li>COVID-19</li>
+        <li>Flu</li>
+        <li>Pneumonia</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Cardiovascular / Digestive -->
+  <section class="grid grid-2" style="margin-top:1rem;">
+    <article class="card">
+      <h3>Cardiovascular System</h3>
+      <ul>
+        <li>Hypertension (High Blood Pressure) <strong>(Refills only)</strong></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Digestive System</h3>
+      <ul>
+        <li>Abdominal pain</li>
+        <li>Bloating</li>
+        <li>Constipation</li>
+        <li>Diarrhea</li>
+        <li>Fatigue</li>
+        <li>Food Poisoning</li>
+        <li>Gastroenteritis</li>
+        <li>GERD (Acid Reflux)</li>
+        <li>Hemorrhoids</li>
+        <li>Irritable Bowel Syndrome</li>
+        <li>Lactose Intolerance</li>
+        <li>Nausea / Vomiting</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Endocrine / Skin -->
+  <section class="grid grid-2" style="margin-top:1rem;">
+    <article class="card">
+      <h3>Endocrine System</h3>
+      <ul>
+        <li>Addisons Disease <strong>(Refills only)</strong></li>
+        <li>Diabetes (High Blood Sugar) <strong>(Refills only)</strong></li>
+        <li>Hyperlipidemia (High Cholesterol) <strong>(Refills only)</strong></li>
+        <li>Thyroid Dysfunction <strong>(Refills only)</strong></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Skin Conditions</h3>
+      <ul>
+        <li>Acne</li>
+        <li>Allergies</li>
+        <li>Animal / insect bites or scratch</li>
+        <li>Athlete's Foot</li>
+        <li>Boil</li>
+        <li>Cellulitis</li>
+        <li>Dandruff</li>
+        <li>Eczema</li>
+        <li>Genital Herpes</li>
+        <li>Hair Loss <strong>(Refills only)</strong></li>
+        <li>Herpes</li>
+        <li>Ingrown Hair</li>
+        <li>Ingrown Nail</li>
+        <li>Lice</li>
+        <li>Nail Fungus</li>
+        <li>Poison Ivy</li>
+        <li>Psoriasis</li>
+        <li>Scabies</li>
+        <li>Shingles</li>
+        <li>Skin Rash</li>
+        <li>Tick Bites</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Musculoskeletal / Mood -->
+  <section class="grid grid-2" style="margin-top:1rem;">
+    <article class="card">
+      <h3>Musculoskeletal Issues</h3>
+      <ul>
+        <li>Arthritis</li>
+        <li>Back Pain</li>
+        <li>Body Aches</li>
+        <li>Gout</li>
+        <li>Pulled Muscle</li>
+        <li>Twisted Wrist / Ankle</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Mood Disorders <strong>(REFILL ONLY)</strong></h3>
+      <ul>
+        <li>Anxiety <em>(Provider discretion, refill only)</em></li>
+        <li>Depression <strong>(Refill only)</strong></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Neuro / Urinary -->
+  <section class="grid grid-2" style="margin-top:1rem;">
+    <article class="card">
+      <h3>Neurological Disorders</h3>
+      <ul>
+        <li>Alzheimer's <strong>(Refill only)</strong></li>
+        <li>Dizziness</li>
+        <li>Headaches</li>
+        <li>Migraines</li>
+        <li>Nerve Pain</li>
+        <li>Parkinson's Disease <strong>(Refill only)</strong></li>
+        <li>Restless Leg Syndrome <strong>(Refill only)</strong></li>
+        <li>Seizure / Epilepsy <strong>(Refill only)</strong></li>
+        <li>Vertigo</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Urinary System</h3>
+      <ul>
+        <li>Benign Prostatic Hyperplasia (BPH)</li>
+        <li>Urinary Tract Infection (UTI)</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Reproductive / Prevention -->
+  <section class="grid grid-2" style="margin-top:1rem;">
+    <article class="card">
+      <h3>Reproductive System</h3>
+      <ul>
+        <li>Bacterial Vaginosis (BV)</li>
+        <li>Birth Control / Contraception <strong>(Refill only)</strong></li>
+        <li>Erectile Dysfunction <strong>(Refill only)</strong></li>
+        <li>Genital Herpes</li>
+        <li>Menopause <strong>(Refill only)</strong></li>
+        <li>Period Pain / Dysmenorrhea / Menstrual Pain</li>
+        <li>Sexually Transmitted Infections (STI's) <strong>(Requires Complex Visit)</strong></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Prevention Care</h3>
+      <ul>
+        <li>Epi Pen <strong>(Refill only)</strong></li>
+        <li>PrEP (Pre-Exposure Prophylaxis)</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Complex visit note -->
+  <section style="margin-top:1rem;">
+    <div class="card">
+      <h3 style="margin-top:0;">Multiple / Complex Visits (Additional Fees Apply)</h3>
+      <p>Includes 2 or more conditions (refills or diagnosis) or visits requiring more than 15 minutes. Please book a <strong>Complex Visit</strong>.</p>
+      <p>STI's visits require a more comprehensive evaluation—please schedule a 30-minute appointment. <em>(Additional charges apply.)</em></p>
+      <p><em>***This is not an all inclusive list. We treat many other conditions.</em></p>
+    </div>
+  </section>
+
+  <section style="margin-top:1rem; text-align:center;">
+    <a class="btn" href="/start-your-visit/">Get Started Now</a>
+  </section>
+</BaseLayout>

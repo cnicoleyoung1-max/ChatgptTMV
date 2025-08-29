@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = {
+  title: "Start Your Visit",
+  description: "Book a telehealth appointment online in Florida. Choose your visit type and complete your intake."
+};
+---
+<BaseLayout title={{page.title}} description={{page.description}}>
+  <header style="text-align:center;">
+    <h1 style="font-size: clamp(28px,4vw,42px);">Start Your Visit</h1>
+    <p style="color:var(--muted); margin:.25rem 0 0;"><strong>Must be present in the state of Florida at time of visit.</strong></p>
+  </header>
+
+  <section class="card" style="margin-top:1rem; padding:1rem;">
+    <h2 style="margin:0 0 .5rem; font-size: var(--h3);">Choose a category</h2>
+    <div id="intakeq" style="max-width:720px; width: 100%; margin: 0 auto;" aria-label="TeleMed Visits online booking widget"></div>
+  </section>
+
+  <script is:inline>
+    (function (c) {
+      // Categories are built into the widget — no category ID needed here.
+      window.intakeq = "6858cb26ed2941fd8a2945fe";
+      var i = c.createElement("script");
+      i.type = "text/javascript";
+      i.async = true;
+      i.src = "https://intakeq.com/js/widget.min.js?1";
+      i.setAttribute("data-intakeq", "true");
+      document.head.appendChild(i);
+    })(document);
+  </script>
+
+  <noscript>
+    <p>JavaScript is required to book online. If you cannot use the form, please visit our <a href="/contact-us/">Contact page</a>.</p>
+  </noscript>
+</BaseLayout>
