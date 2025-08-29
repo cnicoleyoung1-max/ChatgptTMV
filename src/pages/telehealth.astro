@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const page = { title: "Telehealth", description: "How virtual visits work" };
+---
+<BaseLayout title={page.title} description={page.description}>
+  <h1 style="font-size:var(--h1);">Telehealth</h1>
+  <p>Explain your process here: scheduling, consent, meeting link (Google Meet), and after-visit summary.</p>
+  <ol>
+    <li>Schedule online</li>
+    <li>Complete intake forms</li>
+    <li>Join secure video visit</li>
+    <li>eRx sent to your pharmacy</li>
+  </ol>
+</BaseLayout>
