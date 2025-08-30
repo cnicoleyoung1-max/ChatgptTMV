@@ -1,5 +1,15 @@
 ---
-const { title = "TeleMed Visits", description = "" } = Astro.props;
+const { title = "TeleMed Visits", description = "", bannerText = "" } = Astro.props;
+const nav = [
+  { href: "/", text: "Home" },
+  { href: "/what-we-treat/", text: "What We Treat" },
+  { href: "/pricing/", text: "Pricing" },
+  { href: "/how-it-works/", text: "How It Works" },
+  { href: "/faqs/", text: "FAQ’s" },
+  { href: "/start-your-visit/", text: "Start Your Visit" },
+  { href: "/about-us/", text: "About Us" },
+  { href: "/contact-us/", text: "Contact Us" },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -7,10 +17,120 @@ const { title = "TeleMed Visits", description = "" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b2242" />
     <title>{title}</title>
-    <style>body{font-family:system-ui;margin:0;padding:24px}</style>
+
+    <style>
+      :root{
+        --bg:#ffffff; --text:#0b2242; --muted:#586781;
+        --card:#ffffff; --surface:#f5f8fc; --border:#e6eaf0;
+        --brand:#00b7ff; --brand-2:#00ffaa; --radius:16px; --pad:1rem;
+        color-scheme: light dark;
+      }
+      /* Dark-mode palette */
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0b2242; --text:#eaf2ff; --muted:#b9c6dc;
+          --card:#10223a; --surface:#0f1f35; --border:#20324c;
+        }
+      }
+
+      *{box-sizing:border-box}
+      body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "ClashGrotesk", sans-serif; background:var(--bg); color:var(--text);}
+      a{color:inherit; text-decoration:none}
+      .container{max-width:1100px; margin:0 auto; padding: 0 var(--pad);}
+
+      /* Full-bleed helper for sections */
+      .full-bleed{width:100vw; max-width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);}
+
+      /* Top CTA bar */
+      .topbar{background: var(--brand); text-align:center; padding:.35rem 0;}
+      .topbar a{display:inline-block; background:#fff; color:#0b2242; padding:.4rem .9rem; border-radius:999px; font-weight:700;}
+
+      /* Header (now wrapped in a full-bleed background) */
+      .header-bleed{ background: var(--bg); border-bottom:1px solid var(--border); }
+      header.site{display:flex; align-items:center; gap:.75rem; padding:.6rem var(--pad);}
+      .brand{display:flex; align-items:center; gap:.6rem;}
+      .brand img{height:72px}
+      @media (max-width:1024px){ .brand img{height:60px} }
+      @media (max-width:480px){ .brand img{height:48px} }
+      .brand span{font-weight:700;}
+      @media (max-width:1100px){ .brand span{display:none;} }
+
+      nav{margin-left:auto; display:flex; flex-wrap:wrap; gap:.6rem .9rem;}
+      nav a{padding:.45rem .4rem; font-weight:600; font-size:.95rem; line-height:1}
+      nav a[aria-current="page"]{border-bottom:3px solid currentColor}
+
+      main{min-height:60vh;}
+      .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:.8rem;}
+      .grid{display:grid; gap:1rem;}
+      .grid-2{grid-template-columns: 1fr 1fr;}
+      @media (max-width:900px){ .grid-2{grid-template-columns:1fr;} nav{display:none;} }
+
+      footer.site{margin-top:2rem; border-top:1px solid var(--border); padding:1rem 0;}
+      .footer-row{display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+      .fineprint{color:var(--muted); font-size:.8rem; max-width:700px;}
+      .cards{display:flex; gap:.4rem; align-items:center;}
+      .cards img{height:24px}
+
+      /* Dark-mode logo swap: default show light, hide dark */
+      .logo-light{ display:inline; }
+      .logo-dark{ display:none; }
+      /* Explicit theme toggles (if you ever add them) */
+      html[data-theme="dark"] .logo-light, body.dark .logo-light { display:none; }
+      html[data-theme="dark"] .logo-dark,  body.dark .logo-dark  { display:inline; }
+      /* OS-level dark when no explicit theme is set */
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme]) .logo-light,
+        body:not(.dark):not(.light) .logo-light { display:none; }
+        html:not([data-theme]) .logo-dark,
+        body:not(.dark):not(.light) .logo-dark  { display:inline; }
+      }
+    </style>
   </head>
   <body>
-    <slot />
+    <div class="topbar full-bleed">
+      <a href="/start-your-visit/">Get Started Now</a>
+    </div>
+
+    <!-- Full-bleed header background; content stays centered -->
+    <div class="header-bleed full-bleed">
+      <header class="site container">
+        <a class="brand" href="/">
+          <img class="logo-light" src="/img/logo-light.png" alt="TeleMed Visits logo" />
+          <img class="logo-dark"  src="/img/logo-dark.png"  alt="TeleMed Visits logo — inverse for dark mode" />
+          <span>Florida Telehealth</span>
+        </a>
+        <nav>
+          {nav.map(item => (
+            <a href={item.href} aria-current={Astro.url.pathname === item.href ? "page" : undefined}>
+              {item.text}
+            </a>
+          ))}
+        </nav>
+      </header>
+    </div>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="site">
+      <div class="container footer-row">
+        <div class="fineprint">
+          <p>*$65/visit applies to simple visit</p>
+          <p>**All fees are subject to change. All charges are NON-REFUNDABLE once a virtual connection has been made, attempted and/or services are rendered.</p>
+        </div>
+        <div class="cards">
+          <img src="/img/hipaa.svg" alt="HIPAA compliant"/>
+          <img src="/img/amex.svg" alt="American Express"/>
+          <img src="/img/discover.svg" alt="Discover"/>
+          <img src="/img/mastercard.svg" alt="Mastercard"/>
+          <img src="/img/visa.svg" alt="Visa"/>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
+
