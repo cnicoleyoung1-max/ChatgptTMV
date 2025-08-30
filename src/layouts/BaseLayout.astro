@@ -47,52 +47,91 @@ const nav = [
           --surface:#0f1f35;
           --border:#20324c;
         }
-        .logo-light{ display:none; }
-        .logo-dark{ display:inline; }
         .topbar { background:#0a9edc; }
       }
+
       /* Base */
       *{box-sizing:border-box}
       body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "ClashGrotesk", sans-serif; background:var(--bg); color:var(--text);}
       a{color:var(--text); text-decoration:none}
       .container{max-width:1100px; margin:0 auto; padding: 0 var(--pad);}
+
+      /* Header */
       header.site{display:flex; align-items:center; gap:.75rem; padding:.6rem var(--pad); border-bottom:1px solid var(--border);}
-      nav a{display:inline-block; padding:.6rem .5rem; font-weight:600; opacity:.85}
-      nav a[href="{Astro.url.pathname}"]{border-bottom:3px solid currentColor}
       .brand{display:flex; align-items:center; gap:.6rem;}
-      .brand img{height:30px}
-      .brand .logo-dark{ display:none; }
+      /* BIGGER LOGO */
+      .brand img{height:96px}              /* <— tweak to 104px/112px if you want it larger */
+      @media (max-width:480px){ .brand img{ height:80px; } }
+
+      nav{margin-left:auto;}
+      nav a{display:inline-block; padding:.6rem .5rem; font-weight:600; opacity:.95}
+      /* Active link via aria-current */
+      nav a[aria-current="page"]{border-bottom:3px solid currentColor}
+
       .topbar{background: var(--brand); text-align:center; padding:.35rem 0;}
       .topbar a{display:inline-block; background:#fff; color:#0b2242; padding:.4rem .9rem; border-radius:999px; font-weight:700;}
+
       main{min-height:60vh;}
       .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding: .8rem;}
       .grid{display:grid; gap:1rem;}
       .grid-2{grid-template-columns: 1fr 1fr;}
       @media (max-width: 900px){ .grid-2{grid-template-columns: 1fr;} nav{display:none;} }
+
       footer.site{margin-top:2rem; border-top:1px solid var(--border); padding:1rem 0;}
       .footer-row{display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap;}
       .fineprint{color:var(--muted); font-size:.8rem; max-width:700px;}
       .cards{display:flex; gap:.4rem; align-items:center;}
       .cards img{height:24px}
+
+      /* ——— Dark-mode logo swap ———
+         Works for:
+         1) Site toggles: html[data-theme="dark"] or body.dark
+         2) OS dark when no explicit theme is set
+      */
+      /* default: show light, hide dark */
+      .logo-light{ display:inline; }
+      .logo-dark{ display:none; }
+
+      /* explicit site theme toggles */
+      html[data-theme="dark"] .logo-light,
+      body.dark .logo-light { display:none; }
+      html[data-theme="dark"] .logo-dark,
+      body.dark .logo-dark { display:inline; }
+
+      /* OS preference fallback when no explicit theme attribute/class is set */
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme]) .logo-light,
+        body:not(.dark):not(.light) .logo-light { display:none; }
+        html:not([data-theme]) .logo-dark,
+        body:not(.dark):not(.light) .logo-dark { display:inline; }
+      }
     </style>
   </head>
   <body>
     <div class="topbar">
       <a href="/start-your-visit/">Get Started Now</a>
     </div>
+
     <header class="site container">
       <a class="brand" href="/">
+        <!-- Light and inverse versions -->
         <img class="logo-light" src="/img/logo-light.png" alt="TeleMed Visits logo" />
-        <img class="logo-dark" src="/img/logo-dark.png" alt="TeleMed Visits logo — inverse for dark mode" />
+        <img class="logo-dark"  src="/img/logo-dark.png"  alt="TeleMed Visits logo — inverse for dark mode" />
         <span style="font-weight:700;">Florida Telehealth</span>
       </a>
-      <nav style="margin-left:auto;">
-        {nav.map(item => <a href={item.href}>{item.text}</a>)}
+      <nav>
+        {nav.map(item => (
+          <a href={item.href} aria-current={Astro.url.pathname === item.href ? "page" : undefined}>
+            {item.text}
+          </a>
+        ))}
       </nav>
     </header>
+
     <main class="container">
       <slot />
     </main>
+
     <footer class="site">
       <div class="container footer-row">
         <div class="fineprint">
